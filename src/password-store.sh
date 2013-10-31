@@ -179,10 +179,12 @@ esac
 if [[ -n $PASSWORD_STORE_KEY ]]; then
 	ID="$PASSWORD_STORE_KEY"
 elif [[ ! -f $ID ]]; then
-	echo "You must run:"
-	echo "    $program init your-gpg-id"
-	echo "before you may use the password store."
-	echo
+	cat << _EOF
+You must run:
+    $program init your-gpg-id
+before you may use the password store.
+
+_EOF
 	usage
 	exit 1
 else
